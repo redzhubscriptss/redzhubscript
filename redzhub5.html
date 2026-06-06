@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Redz Hub | Black Edition • Ultimate Roblox Scripting 2026</title>
+    <meta name="description" content="Redz Hub delivers premium keyless Roblox scripts for Blox Fruits, Muscle Legends & Grow a Garden. 90+ features, AI anti‑ban, instant execution.">
+    <meta name="keywords" content="Redz Hub, Roblox script 2026, Blox Fruits hack, Muscle Legends auto farm, Grow a Garden cheat, no key, mobile executor">
+    <meta name="author" content="Redz Hub Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://redzhub.net/">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000000;
+            color: #e0e0e0;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Black & Red Theme */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, #1a0000, #000000 90%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 28px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        .red-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 2px solid #dc2626;
+            padding: 14px 0;
+        }
+
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #dc2626, #b91c1c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #cccccc;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #dc2626;
+            border-bottom-color: #dc2626;
+            text-shadow: 0 0 4px #dc2626;
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .page.active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #dc2626, #b91c1c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 40px 0 20px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 48px 0 20px;
+            border-left: 5px solid #dc2626;
+            padding-left: 20px;
+            color: #facc15;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 32px 0 16px;
+            color: #dc2626;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 24px 0 12px;
+            color: #f87171;
+        }
+
+        .stat-badge {
+            display: inline-block;
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid #dc2626;
+            border-radius: 60px;
+            padding: 6px 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* Cards */
+        .card-red {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #dc2626;
+            border-radius: 28px;
+            padding: 28px;
+            transition: all 0.25s ease;
+        }
+
+        .card-red:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -12px rgba(220, 38, 38, 0.25);
+            border-color: #ef4444;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 32px;
+            margin: 48px 0;
+        }
+
+        /* Code block */
+        .code-block {
+            background: #0a0a0a;
+            border-radius: 28px;
+            padding: 28px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            border: 1px solid #dc2626;
+            position: relative;
+            overflow-x: auto;
+            margin: 40px 0;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 14px;
+            right: 20px;
+            background: #dc2626;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 40px;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #b91c1c;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(95deg, #dc2626, #b91c1c);
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            transition: 0.2s;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 12px #dc2626;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 28px 0;
+        }
+
+        th, td {
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid #dc2626;
+        }
+
+        th {
+            background: #1a0a0a;
+            color: #f87171;
+        }
+
+        footer {
+            margin-top: 90px;
+            background: #050505;
+            padding: 48px 0 32px;
+            border-top: 2px solid #dc2626;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .container { padding: 0 20px; }
+            .header-flex { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="bg-gradient"></div>
+<div class="noise"></div>
+
+<header class="red-header">
+    <div class="container header-flex">
+        <div class="logo"><h1>REDZ<span style="color:#dc2626;">HUB</span> <span style="font-size:0.8rem;">⚡ BLACK EDITION</span></h1></div>
+        <ul class="nav-links">
+            <li><a href="#" data-page="home">🏠 HOME</a></li>
+            <li><a href="#" data-page="blox">🍎 BLOX FRUITS</a></li>
+            <li><a href="#" data-page="muscle">💪 MUSCLE LEGENDS</a></li>
+            <li><a href="#" data-page="garden">🌿 GROW A GARDEN</a></li>
+            <li><a href="#" data-page="about">🔥 ABOUT</a></li>
+            <li><a href="#" data-page="contact">📡 CONTACT</a></li>
+        </ul>
+    </div>
+</header>
+
+<main class="container">
+    <!-- HOME PAGE -->
+    <div id="page-home" class="page active-page">
+        <h1>Redz Hub • The Dark Revolution of Roblox Scripting</h1>
+        <div class="stat-badge"><i class="fas fa-skull"></i> 6.2M+ dark users · 0 keys · AI stealth</div>
+        <p style="margin: 28px 0 20px; font-size:1.1rem">Welcome to <strong class="text-red">Redz Hub Black Edition</strong> — the most aggressive, keyless, and undetectable scripting suite for Roblox. Our AI-driven anti-ban, behavioral randomization, and cloud-based updates keep you ahead of every patch. Dominate Blox Fruits, Muscle Legends, Grow a Garden with 95+ modules each.</p>
+
+        <div class="grid-3">
+            <div class="card-red"><i class="fas fa-shield-virus" style="font-size:2.5rem; color:#dc2626;"></i><h3>AI Anti-Ban Shield</h3><p>Human-like delay injection, random pathing, and anti-pattern recognition. Ban rate &lt;0.4% in safe mode. Constantly evolving.</p></div>
+            <div class="card-red"><i class="fas fa-mobile-alt" style="font-size:2.5rem; color:#dc2626;"></i><h3>Cross-Platform Dark Engine</h3><p>Seamless support for PC (Synapse, Krnl), Android (Arceus X, Codex), iOS (Hydrogen). Cloud profiles sync across devices.</p></div>
+            <div class="card-red"><i class="fas fa-infinity" style="font-size:2.5rem; color:#dc2626;"></i><h3>95+ Features Per Game</h3><p>Auto-farm, ESP, teleport hubs, dungeon bots, raid automation, item unlockers — unmatched depth.</p></div>
+        </div>
+
+        <h2>⚔️ Why Redz Hub Dominates 2026</h2>
+        <p>Unlike other hubs filled with linkvertise keys, malware, or slow updates, Redz Hub is built by a 22‑person full‑time team. We release major feature drops every 14 days, respond to bugs in hours, and maintain a 145k Discord community. Our injection stability is 99.98%, and we provide real-time script status.</p>
+        <div class="table-wrapper">
+            <table><th>Benchmark</th><th>Redz Hub Black</th><th>Other Hubs</th></tr>
+            <tr><td>Key / Paywall</td><td>✅ None</td><td>❌ Keys / Premium</td></tr>
+            <tr><td>Average update speed</td><td>&lt;6 hours</td><td>1–5 days</td></tr>
+            <tr><td>Mobile optimization</td><td>✅ Full touch UI</td><td>❌ Limited</td></tr>
+            <tr><td>Stealth features</td><td>✅ Advanced AI</td><td>Basic delays</td></tr>
+            </table>
+        </div>
+
+        <h2>🚀 Quick Execution Guide</h2>
+        <div class="grid-3">
+            <div class="card-red"><strong>1. Get an executor</strong><br>PC → Synapse X / Krnl. Android → Arceus X. iOS → Hydrogen.</div>
+            <div class="card-red"><strong>2. Launch Roblox</strong><br>Join any supported game (Blox Fruits, Muscle Legends, etc.)</div>
+            <div class="card-red"><strong>3. Inject & paste script</strong><br>Use the universal loader below. GUI toggles with Insert key or 3‑finger tap.</div>
+        </div>
+
+        <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <code>loadstring(game:HttpGet("https://cdn.redzhub.io/redz_black_boot.lua", true))()</code>
+        </div>
+
+        <h2>📈 Roadmap 2026 – Black Ops Updates</h2>
+        <div class="grid-3">
+            <div class="card-red"><strong>📱 Native Mobile Injector</strong> – standalone app (Q3 2026).</div>
+            <div class="card-red"><strong>🧠 AI Macro Studio</strong> – record/share complex sequences.</div>
+            <div class="card-red"><strong>🎮 +8 New Games</strong> – Pet Sim 99, Blade Ball, King Legacy.</div>
+        </div>
+
+        <h2>❓ Dark FAQ</h2>
+        <div class="grid-3">
+            <div class="card-red"><strong>Is Redz Hub truly keyless?</strong> Yes, forever free, no linkvertise, no hidden paywalls.</div>
+            <div class="card-red"><strong>Can I get banned?</strong> Risk is minimal if using safe mode & private servers. We have 0.4% ban rate among careful users.</div>
+            <div class="card-red"><strong>How often updates?</strong> Emergency patches within 6 hours, weekly enhancements.</div>
+        </div>
+        <p>Our community has already achieved over 22M+ collective hours of saved grinding time. With Redz Hub, you focus on fun, we handle the grind.</p>
+    </div>
+
+    <!-- BLOX FRUITS PAGE -->
+    <div id="page-blox" class="page">
+        <h1>Blox Fruits • Redz Edition – 88+ Automation Modules</h1>
+        <div class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>loadstring(game:HttpGet("https://cdn.redzhub.io/games/bloxfruit_black_v10.lua"))()</code></div>
+        <p>Our Blox Fruits script dominates with 88+ advanced modules: Auto leveling from 1 to 2600 in 19h, intelligent raid automation, fruit sniping with server hop, complete puzzle solver (Indra, Leviathan, Blue Gear). Features include auto farm mastery, ESP that shows fruit timers, chest values, and boss respawn down to 0.2s precision.</p>
+        
+        <h2>✨ Core Feature Deep Dive</h2>
+        <h3>🔁 Auto Farm Systems (22 variants)</h3>
+        <p><strong>Smart NPC Farm:</strong> Target highest mastery/money per kill, auto-quest turn-in, automatic stat distribution. <strong>Auto Raid:</strong> Complete any raid in under 2:20 min with auto-button, fruit delivery, and reward collection. <strong>Elite & Boss Hunter:</strong> Rotates 60+ bosses, tracks exact respawn timers, prioritizes rare drops (God Chalice, Dark Fragment). <strong>Sea Beast & Mirage Island:</strong> teleports instantly on spawn, collects chests.</p>
+        
+        <h3>👁️ Next‑Gen ESP Suite</h3>
+        <p>Fruit ESP (name, despawn timer, distance), Chest ESP (legendary/fragment color code), Player ESP with fruit & level, Boss ESP with health %, Aura ESP, and Raid indicators. Fully customizable colors and toggle.</p>
+        
+        <h3>🗺️ Teleport Hub (600+ coordinates)</h3>
+        <p>Teleport to any island, secret rooms, factory, dough king, and all NPCs. Movement enhancers: fly (up to 350 speed), noclip, water walk, infinite jump.</p>
+        
+        <h3>⚔️ Combat & PvP Enhancers</h3>
+        <p>Smooth Aimlock (prediction), Silent Aim, Auto Dodge, Auto Combo builder, Ken Haki auto-activate, Damage Predictor, and anti-stun.</p>
+        
+        <div class="card-red"><strong>📊 Pro Strategy: 1-2600 fastest route</strong><br>Use Light fruit until level 700 → Buddha with auto clicker → enable auto raid + elite farm. 0-2600 in ~18 hours.</div>
+        
+        <h2>🧠 Fragment & Money Guide</h2>
+        <p>Enable Auto Raid (fragment mode) + Auto Elite Farm → over 2500 fragments/hour. For beli: Auto Factory + Chest Farmer + Mirage loot → 5M/hour.</p>
+        
+        <h2>⚠️ Safety stats</h2>
+        <p>With "Stealth Mode" + 450ms delays + private server: 0.3% ban rate. We recommend using alt accounts for aggressive farming. Redz Hub includes auto-rejoin and crash recovery.</p>
+        
+        <h2>❓ Blox Fruits Pro FAQ</h2>
+        <p><strong>Mobile compatibility?</strong> Full touch GUI on Arceus X & Hydrogen. <strong>Does it work on third sea?</strong> Yes, all islands and bosses. <strong>Best fruit for script?</strong> Buddha for melee AOE or Light for travel speed.</p>
+        <p>Our script helped over 3.2M players reach max level, and we offer dedicated support via Discord. Enjoy the most complete Blox Fruits script ever created – 100% keyless.</p>
+    </div>
+
+    <!-- MUSCLE LEGENDS PAGE -->
+    <div id="page-muscle" class="page">
+        <h1>Muscle Legends • Dark Gym Bot + 300+ Rebirth Stacker</h1>
+        <div class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>loadstring(game:HttpGet("https://cdn.redzhub.io/games/muscle_black_trainer.lua"))()</code></div>
+        <p>Transform your muscle journey with Redz Hub: all machines automated (bench, dumbbell, treadmill, rock climbing, rowing, leg press, pull-ups). <strong>Auto Rebirth</strong> up to 300 stacks (+1500% strength), <strong>Auto Prestige</strong> up to 25 prestiges (+250% global), dungeon farming at 35k gems/hour, and real-time muscle gain optimization.</p>
+        
+        <h2>🏋️ Core Modules</h2>
+        <h3>Intelligent Training Suite</h3>
+        <p>Auto Train All Machines simultaneously (triples gains), machine switching based on muscle group deficiency. Auto purchase all permanent upgrades (2x training speed, extra slots). Auto Potion Management (strength/speed/stamina pots always active). Auto Upgrade Trainer to level 45 for +450% efficiency.</p>
+        
+        <h3>Rebirth & Prestige Stacking</h3>
+        <p>Smart Rebirth: waits until level 150 or user-defined threshold, then instantly rebirths. Permanent +5% strength each. Prestige automation: automatically prestiges at rank 100 for +10% boost (up to 25 prestiges). Combined boosts can reach +1750% strength.</p>
+        
+        <h3>Dungeon Automation (Expert+Master)</h3>
+        <p>Auto teleport to dungeons, boss rush mode, chest collector, gem farming route (35k/hour). Also auto-sell junk items and auto-equip best-in-slot gear.</p>
+        
+        <div class="card-red"><strong>💎 Power Leveling Blueprint:</strong> enable all six machines, rebirth at level 150, prestige every 100 ranks → rank 2500 within 3.2 hours.</div>
+        
+        <h2>📊 Gem farming strategy</h2>
+        <p>Enable "Master Dungeon Rush" + "Auto Sell Junk". Average yield: 33k–38k gems per hour. Use gems to buy Infinite Potions and legendary crates.</p>
+        
+        <h2>🛡️ Safety & Mobile</h2>
+        <p>Muscle Legends has minimal anti-cheat. Use private server for absolute safety. Mobile users: Arceus X (Android) fully supports the GUI. Our script includes a performance mode for low-end devices.</p>
+        
+        <h2>❓ Muscle FAQ</h2>
+        <p><strong>Can I get banned?</strong> Extremely low risk, especially with safe mode. <strong>Does it work with the latest update?</strong> Always updated within 8h. <strong>How many rebirths recommended?</strong> 250+ for maximum strength.</p>
+        <p>Trusted by 2.2M+ players, Redz Hub Muscle Legends script is the most sophisticated gym bot available. Dominate the leaderboards effortlessly.</p>
+    </div>
+
+    <!-- GROW A GARDEN PAGE -->
+    <div id="page-garden" class="page">
+        <h1>Grow a Garden • Instant Harvest & Infinite Seeds</h1>
+        <div class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>loadstring(game:HttpGet("https://cdn.redzhub.io/games/garden_black_harvest.lua"))()</code></div>
+        <p>The ultimate garden automation suite: bypass growth timers (harvest in 0.1 seconds), auto water/fertilizer, unlimited coins generator (safe increments), rare seed unlocker (including Robux-only seeds), dungeon teleports for ancient artifacts, and profit tracker. Our script hooks directly to game ticks and provides instantaneous crop cycles – yielding up to 5M coins per hour.</p>
+        
+        <h2>🌿 Key features breakdown</h2>
+        <h3>Instant Growth Override</h3>
+        <p>Set custom growth time (0.1s – 60s). "Super Instant Mode" grows any seed to harvest in 0.1s. Auto Harvest + Auto Replant with priority for highest value seeds. Supports 50+ plots at once.</p>
+        
+        <h3>Economy Tools</h3>
+        <p>Unlimited Coins Hack (add 80k–160k increments to avoid flags). Auto Sell at Peak Market Price (dynamic price tracker). Gem generator for premium currency. Auto Trade NPCs – complete all trades instantly.</p>
+        
+        <h3>Seed Unlocker & Collection</h3>
+        <p>Unlock all 180+ seeds (event, legendary, Robux exclusives). Seed multiplier: 4x harvest yield. Mutation unlocker and color variant unlocker – complete the entire seed library within minutes.</p>
+        
+        <div class="card-red"><strong>💸 Insane Profit Method:</strong> Activate Instant Growth (0.2s) + Dungeon Teleport (Master). Acquire ancient seeds → grow instantly → sell for 150k each → repeat every 12 seconds. 5M+ coins/hour guaranteed.</div>
+        
+        <h2>📱 Mobile & Safety</h2>
+        <p>Fully compatible with Arceus X, Hydrogen. Safe mode includes "cooldown randomization" to mimic natural farming. Our anti-ban is passive due to game’s low moderation, but we still recommend moderate coin generation.</p>
+        
+        <h2>❓ Garden FAQ</h2>
+        <p><strong>Will I get banned for unlimited coins?</strong> If used moderately (under 250k per injection) – extremely safe. <strong>Does it unlock limited event seeds?</strong> Yes, all time‑limited seeds become permanently unlocked. <strong>Works on private servers?</strong> Perfectly.</p>
+        <p>1.8M+ gardeners use Redz Hub to build dream gardens instantly. No keys, no bullshit.</p>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="page-about" class="page">
+        <h1>About Redz Hub – The Dark Syndicate</h1>
+        <div class="stat-badge">✨ Founded 2023 • 6.2M users • 0$ ever charged</div>
+        <p style="margin-top:28px">Redz Hub began as a passion project by two reverse engineers who were tired of paid, malware-ridden script hubs. Today, we’re a team of 22 developers, designers, and community managers working full-time to deliver the most reliable, keyless scripts in the Roblox ecosystem. Our code is open-source auditable, we never collect personal data, and we actively contribute to the scripting community with free tools and documentation.</p>
+        
+        <h2>📊 Milestones</h2>
+        <div class="grid-3">
+            <div class="card-red">6.2M monthly active devices</div>
+            <div class="card-red">145k Discord members</div>
+            <div class="card-red">16 supported games</div>
+            <div class="card-red">Avg feature count per script: 92</div>
+        </div>
+        
+        <h2>🎯 Our mission</h2>
+        <p>Democratize Roblox automation: no one should pay for quality scripts or suffer through malicious key systems. We provide ethical automation tools while encouraging responsible usage (private servers, no harassment). Redz Hub will remain 100% free and transparent forever.</p>
+        
+        <h2>🔮 Future roadmap</h2>
+        <ul style="margin-left: 28px;">
+            <li>Q3 2026: Native mobile injection app (no external executor)</li>
+            <li>AI macro recorder with cloud sharing</li>
+            <li>Support for 10 additional games (King Legacy, Pet Sim 99, Blade Ball)</li>
+            <li>Hardware ID spoofer built-in</li>
+        </ul>
+        <div class="card-red">💙 Support us via GitHub Sponsors or Discord donations – every contribution goes to hosting and development.</div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="page-contact" class="page">
+        <h1>Contact Redz Hub Support</h1>
+        <p>Our support team replies within 12 hours on average. For urgent issues, join our Discord (145k+ members) for instant community help.</p>
+        <div class="card-red" style="margin:32px 0">
+            <form id="contactFormBlack">
+                <input type="text" placeholder="Discord / Username *" style="width:100%; padding:14px; margin:12px 0; background:#0a0a0a; border:1px solid #dc2626; border-radius: 60px; color:white;" required>
+                <input type="email" placeholder="Email (optional)" style="width:100%; padding:14px; margin:12px 0; background:#0a0a0a; border:1px solid #dc2626; border-radius: 60px; color:white;">
+                <select style="width:100%; padding:14px; margin:12px 0; background:#0a0a0a; border-radius: 60px; border:1px solid #dc2626; color:#e0e0e0;">
+                    <option>🐞 Bug report</option><option>🎮 Game request</option><option>⚙️ Executor help</option><option>💡 Suggestion</option>
+                </select>
+                <textarea rows="6" placeholder="Detailed message *" style="width:100%; padding:16px; border-radius: 24px; background:#0a0a0a; border:1px solid #dc2626; color:white;" required></textarea>
+                <button type="submit" class="btn-primary">Send message</button>
+            </form>
+            <div id="contactSuccessMsg" style="display:none; margin-top:20px; background:#dc2626; padding:12px; border-radius: 60px; text-align:center;">✅ Sent! Expect reply in &lt;24h.</div>
+        </div>
+        <div class="card-red"><i class="fab fa-discord"></i> <strong>Discord:</strong> discord.gg/redzhub (fastest)<br><i class="fas fa-envelope"></i> Email: support@redzhub.net</div>
+        <h3>Support hours</h3>
+        <p>Mon-Fri: 9 AM – 11 PM EST | Weekends: 10 AM – 9 PM EST. Average response: 8h on Discord, 18h on email.</p>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div style="display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin-bottom:28px;">
+            <a href="#" data-page="home" style="color:#dc2626;">Home</a>
+            <a href="#" data-page="blox" style="color:#dc2626;">Blox Fruits</a>
+            <a href="#" data-page="muscle" style="color:#dc2626;">Muscle Legends</a>
+            <a href="#" data-page="garden" style="color:#dc2626;">Grow a Garden</a>
+            <a href="#" data-page="about" style="color:#dc2626;">About</a>
+            <a href="#" data-page="contact" style="color:#dc2626;">Contact</a>
+        </div>
+        <p style="font-size:0.75rem;">⚠️ DISCLAIMER: Redz Hub is not affiliated with Roblox Corp. Scripts for educational/private server use only. Use responsibly.</p>
+        <p>© 2024-2026 Redz Hub – Black Edition • Zero keys • Infinite power.</p>
+    </div>
+</footer>
+
+<script>
+    // PAGE NAVIGATION SYSTEM
+    const routes = {
+        home: { title: "Redz Hub | Ultimate Keyless Roblox Scripts 2026 – Black Edition", description: "Free Blox Fruits, Muscle Legends & Grow a Garden scripts. 95+ features, AI anti-ban, mobile support. No keys.", permalink: "/" },
+        blox: { title: "Redz Hub Blox Fruits Script 2026 – Auto Raid, Fruit ESP, 88+ Tools", description: "Ultimate Blox Fruits script with raid automation, fruit sniper, teleport hub, aimlock. Undetectable & keyless.", permalink: "/blox-fruits" },
+        muscle: { title: "Redz Hub Muscle Legends Script – Auto Train, 300+ Rebirths, Dungeon Bot", description: "Complete automation for Muscle Legends: auto gym, rebirth stacking, prestige, gem farm.", permalink: "/muscle-legends" },
+        garden: { title: "Redz Hub Grow a Garden Hack – Instant Harvest, Unlimited Coins, Rare Seeds", description: "Grow a Garden cheat: instant 0.1s growth, infinite coins, unlock all seeds. Best garden automation 2026.", permalink: "/grow-a-garden" },
+        about: { title: "About Redz Hub – Free & Open Source Roblox Script Hub", description: "Meet the team behind Redz Hub. 6.2M users, open-source values, roadmap 2026.", permalink: "/about" },
+        contact: { title: "Contact Redz Hub – Support, Bugs & Game Requests", description: "Reach Redz Hub support via Discord or contact form. Fast help for script issues.", permalink: "/contact" }
+    };
+
+    function navigate(pageId) {
+        // Update active page
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+        const target = document.getElementById(`page-${pageId}`);
+        if (target) target.classList.add('active-page');
+        
+        // Update meta tags
+        if (routes[pageId]) {
+            document.title = routes[pageId].title;
+            document.querySelector('meta[name="description"]').setAttribute('content', routes[pageId].description);
+            let canonical = document.querySelector('link[rel="canonical"]');
+            if (canonical) canonical.setAttribute('href', `https://redzhub.net${routes[pageId].permalink}`);
+        }
+        
+        // Update active nav link
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+        const activeNav = Array.from(document.querySelectorAll('.nav-links a')).find(a => a.getAttribute('data-page') === pageId);
+        if (activeNav) activeNav.classList.add('active');
+        
+        // Push state for proper permalinks
+        window.history.pushState({ page: pageId }, '', routes[pageId].permalink);
+        window.scrollTo(0, 0);
+    }
+
+    // Event listeners for nav links
+    document.querySelectorAll('.nav-links a, footer a[data-page]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = link.getAttribute('data-page');
+            if (page && routes[page]) navigate(page);
+        });
+    });
+
+    // Handle back/forward buttons
+    window.addEventListener('popstate', (e) => {
+        const path = window.location.pathname;
+        let foundPage = 'home';
+        for (const [key, val] of Object.entries(routes)) {
+            if (val.permalink === path) { foundPage = key; break; }
+        }
+        navigate(foundPage);
+    });
+
+    // Copy function
+    window.copyCode = function(btn) {
+        const code = btn.parentElement.querySelector('code').innerText;
+        navigator.clipboard.writeText(code);
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 1800);
+    };
+
+    // Contact form
+    const form = document.getElementById('contactFormBlack');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('contactSuccessMsg').style.display = 'block';
+            form.reset();
+            setTimeout(() => document.getElementById('contactSuccessMsg').style.display = 'none', 5000);
+        });
+    }
+
+    // Initial navigation based on URL path
+    const initialPath = window.location.pathname;
+    let initialPage = 'home';
+    for (const [key, val] of Object.entries(routes)) {
+        if (val.permalink === initialPath) { initialPage = key; break; }
+    }
+    navigate(initialPage);
+</script>
+</body>
+</html>
